@@ -1,0 +1,15 @@
+namespace App\Http\Controllers;
+
+use App\Models\Product;
+use Illuminate\Http\Request;
+
+class ProductController extends Controller
+{
+    public function index()
+    {
+        // Carrega os produtos juntamente com seus itens associados
+        $products = Product::with('items')->get();
+
+        return view('products.index', compact('products'));
+    }
+}
